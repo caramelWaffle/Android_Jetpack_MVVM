@@ -25,6 +25,7 @@ class ChallengeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentViewModelChallengeBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = this
         init(savedInstanceState)
         return binding.root
     }
@@ -32,17 +33,7 @@ class ChallengeFragment : Fragment() {
     private fun init(savedInstanceState: Bundle?) {
         viewModelFactory = ViewModelFactory(10)
         viewModel = ViewModelProvider(this, viewModelFactory).get(ChallengeActivityViewModel::class.java)
-
-        viewModel.getScore().observe(this, Observer {
-            binding.tvSum.text = it.toString()
-        })
-
-        binding.apply {
-            btnSum.setOnClickListener {
-                viewModel.sumScore(editTextNumber.text.toString())
-                editTextNumber.text.clear()
-            }
-        }
+        binding.mViewModel = viewModel
     }
 
     companion object {

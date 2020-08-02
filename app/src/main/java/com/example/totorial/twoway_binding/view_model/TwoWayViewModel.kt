@@ -1,25 +1,17 @@
-package com.example.totorial.view_model.view_model
+package com.example.totorial.twoway_binding.view_model
 
-import android.widget.Toast
 import androidx.databinding.Bindable
 import androidx.databinding.Observable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.totorial.MainApplication
 
-class ChallengeActivityViewModel(score: Int) : ViewModel(), Observable{
-
-    private var score = MutableLiveData<Int>()
+class TwoWayViewModel(username: String) : ViewModel(), Observable {
     @Bindable
-    var inputScore = MutableLiveData<String>()
+    val username = MutableLiveData<String>()
 
     init {
-        this.score.value = score
-    }
-
-    fun sumScore() {
-        this.score.value = this.score.value?.plus(inputScore.value!!.toInt())
+        this.username.value = username
     }
 
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {

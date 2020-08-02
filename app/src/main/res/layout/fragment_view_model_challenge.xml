@@ -4,11 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".view_model.activity.ChallengeActivity">
 
+    <data>
+        <variable
+            name="mViewModel"
+            type="com.example.totorial.view_model.view_model.ChallengeActivityViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <EditText
+            android:text="@={mViewModel.inputScore}"
             android:id="@+id/editTextNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -21,6 +28,7 @@
             app:layout_constraintVertical_chainStyle="packed" />
 
         <Button
+            android:onClick="@{()-> mViewModel.sumScore()}"
             android:id="@+id/btn_sum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -37,7 +45,7 @@
             android:id="@+id/tv_sum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
+            android:text="@{String.valueOf(mViewModel.score)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

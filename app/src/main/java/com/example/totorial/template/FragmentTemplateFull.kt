@@ -7,9 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.totorial.R
 
-/**
- * Created by nuuneoi on 11/16/2014.
- */
 class FragmentTemplateFull : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
