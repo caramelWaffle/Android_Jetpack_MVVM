@@ -10,17 +10,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view_model.activity.ViewModelChallengeActivity">
+        <activity android:name=".view_model.activity.ChallengeActivity">
+
+        </activity>
+        <activity android:name=".view_model.activity.ViewModelActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view_model.activity.ViewModelActivity">
+        <activity android:name=".main.activity.MainActivity">
 
         </activity>
-        <activity android:name=".main.activity.MainActivity"></activity>
     </application>
 
 </manifest>

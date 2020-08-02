@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.totorial.R
 import com.example.totorial.databinding.FragmentViewModelChallengeBinding
@@ -18,55 +19,30 @@ class ChallengeFragment : Fragment() {
     lateinit var viewModel: ChallengeActivityViewModel
     lateinit var viewModelFactory: ViewModelFactory
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        savedInstanceState?.let { onRestoreInstanceState(it) }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentViewModelChallengeBinding.inflate(inflater, container, false)
-        viewModelFactory = ViewModelFactory(10)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(ChallengeActivityViewModel::class.java)
         init(savedInstanceState)
         return binding.root
     }
 
     private fun init(savedInstanceState: Bundle?) {
+        viewModelFactory = ViewModelFactory(10)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(ChallengeActivityViewModel::class.java)
+
+        viewModel.getScore().observe(this, Observer {
+            binding.tvSum.text = it.toString()
+        })
+
         binding.apply {
-            tvSum.text = viewModel.getScore().toString()
             btnSum.setOnClickListener {
                 viewModel.sumScore(editTextNumber.text.toString())
-                tvSum.text = viewModel.getScore().toString()
                 editTextNumber.text.clear()
             }
         }
-    }
-
-
-    override fun onStart() {
-        super.onStart()
-    }
-
-    override fun onStop() {
-        super.onStop()
-    }
-
-    /*
-     * Save Instance State Here
-     */
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        // Save Instance State here
-    }
-
-    /*
-     * Restore Instance State Here
-     */
-    private fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        // Restore Instance State here
     }
 
     companion object {

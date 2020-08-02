@@ -9,7 +9,7 @@ import com.example.totorial.databinding.ActivityViewModelChallengeBinding
 import com.example.totorial.view_model.fragment.ChallengeFragment
 import com.example.totorial.view_model.view_model.ChallengeActivityViewModel
 
-class ViewModelChallengeActivity : AppCompatActivity() {
+class ChallengeActivity : AppCompatActivity() {
     lateinit var binding: ActivityViewModelChallengeBinding
     lateinit var fragment: ChallengeFragment
     override fun onCreate(savedInstanceState: Bundle?) {
