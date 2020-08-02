@@ -5,16 +5,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".view_model.activity.ViewModelActivity">
 
+    <data>
+        <variable
+            name="mainViewModel"
+            type="com.example.totorial.view_model.view_model.ViewModelActivityViewModel" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <TextView
+            android:text="@{String.valueOf(mainViewModel.getCount())}"
             android:id="@+id/tv_counter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="TextView"
             app:layout_constraintBottom_toTopOf="@+id/btn_counter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -23,6 +28,7 @@
             app:layout_constraintVertical_chainStyle="packed" />
 
         <Button
+            android:onClick="@{()-> mainViewModel.increaseCount()}"
             android:id="@+id/btn_counter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
