@@ -11,6 +11,10 @@ import com.example.totorial.MainApplication
 class ChallengeActivityViewModel(score: Int) : ViewModel(), Observable{
 
     private var score = MutableLiveData<Int>()
+
+    val scoreData : LiveData<Int>
+    get() = this.score
+
     @Bindable
     var inputScore = MutableLiveData<String>()
 
