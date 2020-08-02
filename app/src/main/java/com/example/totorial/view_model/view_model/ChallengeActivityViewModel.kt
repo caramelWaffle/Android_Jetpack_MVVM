@@ -4,8 +4,12 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import com.example.totorial.MainApplication
 
-class ChallengeActivityViewModel : ViewModel() {
+class ChallengeActivityViewModel(score: Int) : ViewModel() {
     private var score = 0
+
+    init {
+        this.score = score
+    }
 
     fun getScore(): Int {
         return score

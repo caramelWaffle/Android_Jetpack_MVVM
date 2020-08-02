@@ -10,11 +10,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.totorial.R
 import com.example.totorial.databinding.FragmentViewModelChallengeBinding
 import com.example.totorial.view_model.view_model.ChallengeActivityViewModel
+import com.example.totorial.view_model.view_model.ViewModelFactory
 
 
 class ChallengeFragment : Fragment() {
     lateinit var binding: FragmentViewModelChallengeBinding
     lateinit var viewModel: ChallengeActivityViewModel
+    lateinit var viewModelFactory: ViewModelFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +28,8 @@ class ChallengeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentViewModelChallengeBinding.inflate(inflater, container, false)
-        viewModel = ViewModelProvider(this).get(ChallengeActivityViewModel::class.java)
+        viewModelFactory = ViewModelFactory(10)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(ChallengeActivityViewModel::class.java)
         init(savedInstanceState)
         return binding.root
     }
