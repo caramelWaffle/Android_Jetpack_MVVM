@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="mViewModel"
+            type="com.example.totorial.nav_quiz.viewmodel.NavQuizViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".nav_quiz.fragment.NameQuizFragment">
+
+
+        <EditText
+            android:id="@+id/edt_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Enter your name"
+            android:inputType="textPersonName"
+            android:text="@={mViewModel.name}"
+            app:layout_constraintBottom_toTopOf="@+id/edt_year"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <EditText
+            android:id="@+id/edt_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:ems="10"
+            android:hint="Enter birth year"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:text="@={mViewModel.year}"
+            app:layout_constraintBottom_toTopOf="@+id/btnNameSubmit"
+            app:layout_constraintEnd_toEndOf="@+id/edt_name"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/edt_name"
+            app:layout_constraintTop_toBottomOf="@+id/edt_name" />
+
+        <TextView
+            android:id="@+id/tv_name_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{mViewModel.name}"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/edt_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(mViewModel.ageData)}"
+            app:layout_constraintBottom_toTopOf="@+id/edt_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name_result" />
+
+        <Button
+            android:id="@+id/btnNameSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Submit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_year" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
