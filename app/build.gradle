@@ -43,6 +43,8 @@ dependencies {
     // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    // CardView
+    implementation "androidx.cardview:cardview:1.0.0"
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
