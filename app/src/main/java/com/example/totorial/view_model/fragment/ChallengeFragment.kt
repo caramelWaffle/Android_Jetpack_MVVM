@@ -8,10 +8,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.totorial.R
 import com.example.totorial.databinding.FragmentViewModelChallengeBinding
 import com.example.totorial.view_model.view_model.ChallengeActivityViewModel
 import com.example.totorial.view_model.view_model.ViewModelFactory
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class ChallengeFragment : Fragment() {
@@ -34,6 +37,14 @@ class ChallengeFragment : Fragment() {
         viewModelFactory = ViewModelFactory(10)
         viewModel = ViewModelProvider(this, viewModelFactory).get(ChallengeActivityViewModel::class.java)
         binding.mViewModel = viewModel
+
+        lifecycleScope.launch(Dispatchers.IO) {
+            // for coroutine with activity / fragment lifecycle
+        }
+
+        lifecycleScope.launchWhenResumed {
+            // for coroutine with activity / fragment lifecycle
+        }
     }
 
     companion object {

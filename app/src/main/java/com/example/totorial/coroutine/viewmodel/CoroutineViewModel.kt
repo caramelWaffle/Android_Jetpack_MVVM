@@ -6,6 +6,7 @@ import androidx.databinding.Bindable
 import androidx.databinding.Observable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.totorial.coroutine.manager.DataManager
 import kotlinx.coroutines.*
 
@@ -14,8 +15,6 @@ class CoroutineViewModel() : ViewModel(), Observable {
     @Bindable
     val count = MutableLiveData<Int>()
     var userText = MutableLiveData<String>()
-    val mJob = Job()
-    val mCoroutineScope = CoroutineScope(Dispatchers.IO + mJob)
 
     init {
         count.value = 0
@@ -45,7 +44,7 @@ class CoroutineViewModel() : ViewModel(), Observable {
 //        }
 
 //        Run in Main
-        CoroutineScope(Dispatchers.Main).launch {
+        viewModelScope.launch(Dispatchers.Main) {
             Log.i("myTag", "Start")
             // Change to Background
             val stock1 = async(Dispatchers.IO) { getStock1() }
@@ -57,18 +56,11 @@ class CoroutineViewModel() : ViewModel(), Observable {
 //        Running and receiving data from function
 //        if have multi coroutine start calling it with main and io in sub coroutine
         val dataManager = DataManager()
-        CoroutineScope(Dispatchers.Main).launch {
+        viewModelScope.launch(Dispatchers.Main) {
             Toast.makeText(Contextor.getContext(), dataManager.getTotalUserCount().toString(), Toast.LENGTH_LONG).show()
             Toast.makeText(Contextor.getContext(), dataManager.getTotalUserCount2().toString(), Toast.LENGTH_LONG).show()
         }
 
-        mCoroutineScope.launch {
-            // something
-        }
-
-        mCoroutineScope.async {
-            return@async
-        }
     }
 
     private suspend fun getStock1():Int{
@@ -100,10 +92,5 @@ class CoroutineViewModel() : ViewModel(), Observable {
     override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        // Stop Coroutine
-        mCoroutineScope.cancel()
-    }
 
 }
