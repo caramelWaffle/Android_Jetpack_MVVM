@@ -6,6 +6,7 @@ import androidx.databinding.Bindable
 import androidx.databinding.Observable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.example.totorial.coroutine.manager.DataManager
 import kotlinx.coroutines.*
@@ -16,6 +17,11 @@ class CoroutineViewModel() : ViewModel(), Observable {
     val count = MutableLiveData<Int>()
     var userText = MutableLiveData<String>()
 
+    var user = liveData(Dispatchers.IO) {
+        delay(10000)
+        val result = "Chart"
+        emit(result)
+    }
     init {
         count.value = 0
     }
