@@ -7,12 +7,12 @@ class UserRepository(private val userDAO: UserDAO) {
 
     val users = userDAO.getAllUsers()
 
-    suspend fun insertUser(user: User){
-        userDAO.insertUser(user)
+    suspend fun insertUser(user: User): Long{
+       return userDAO.insertUser(user) // Return newly added ID
     }
 
-    suspend fun updateUser(user: User){
-        userDAO.updateUser(user)
+    suspend fun updateUser(user: User): Int{
+        return userDAO.updateUser(user) // Return affected number of rows
     }
 
     suspend fun deleteUser(user: User){

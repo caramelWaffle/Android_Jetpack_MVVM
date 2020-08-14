@@ -6,15 +6,15 @@ import androidx.room.*
 @Dao
 interface UserDAO {
     @Insert
-    suspend fun insertUser(user: User): Long
+    suspend fun insertUser(user: User): Long // Return newly added ID
 
     @Update
-    suspend fun updateUser(user: User)
+    suspend fun updateUser(user: User): Int // Return affected number of rows
 
     @Delete
-    suspend fun deleteUser(user: User)
+    suspend fun deleteUser(user: User) // Return deleted number of rows
 
-    @Query("DELETE FROM ${User.TABLE_NAME}")
+    @Query("DELETE FROM ${User.TABLE_NAME}") // Return deleted number of rows
     suspend fun deleteAll()
 
     //Live data (auto refresh after delete or update)

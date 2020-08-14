@@ -84,16 +84,24 @@ class RoomViewModel(private val userRepository: UserRepository) : ViewModel(), O
     }
 
     private fun insertUser(user: User) = viewModelScope.launch(Dispatchers.IO) {
-        userRepository.insertUser(user)
+        val userId = userRepository.insertUser(user)
         viewModelScope.launch(Dispatchers.Main) {
-            statusMessage.value = Event("User inserted")
+            if (userId > -1){
+                statusMessage.value = Event("User inserted")
+            }else{
+                statusMessage.value = Event("Error occurred")
+            }
         }
     }
 
     private fun updateUser(user: User) = viewModelScope.launch(Dispatchers.IO) {
-        userRepository.updateUser(user)
+        val numberOfRow = userRepository.updateUser(user)
         withContext(Dispatchers.Main) {
-            statusMessage.value = Event("User updated")
+            if (numberOfRow > 0){
+                statusMessage.value = Event("User updated")
+            }else{
+                statusMessage.value = Event("Error occurred")
+            }
         }
     }
 
