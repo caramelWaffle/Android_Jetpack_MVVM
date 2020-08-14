@@ -10,16 +10,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".coroutine.activity.CoroutineActivity">
+        <activity android:name=".room.view.activity.RoomActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".recyclerview.RecyclerViewActivity">
-        </activity>
-        <activity android:name=".nav_quiz.activity.NavQuizActivity"></activity>
+        <activity android:name=".coroutine.activity.CoroutineActivity"/>
+        <activity android:name=".recyclerview.RecyclerViewActivity"/>
+        <activity android:name=".nav_quiz.activity.NavQuizActivity" />
         <activity android:name=".nav.activity.NavActivity" />
         <activity android:name=".twoway_binding.activity.TwoWayBindingActivity" />
         <activity android:name=".view_model.activity.ChallengeActivity" />

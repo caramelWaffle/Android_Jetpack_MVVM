@@ -36,7 +36,7 @@ class WelcomeFragment : Fragment() {
     private fun initInstances() {
         binding.apply {
             tvName.text = userName
-            tvEmail.text = userEmail
+//            .text = userEmail
             btnTerm.setOnClickListener {
                 it.findNavController().navigate(R.id.action_welcomeFragment_to_termQuizFragment)
             }

@@ -1,4 +1,4 @@
-package com.example.totorial.main.adapter
+package com.example.totorial.recyclerview.adapter
 
 import android.view.LayoutInflater
 import android.view.View

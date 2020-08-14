@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.totorial.R
 import com.example.totorial.databinding.ActivityRecyclerViewBinding
-import com.example.totorial.main.adapter.RecyclerViewAdapter
+import com.example.totorial.recyclerview.adapter.RecyclerViewAdapter
 
 class RecyclerViewActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRecyclerViewBinding
