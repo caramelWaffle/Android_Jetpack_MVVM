@@ -22,6 +22,7 @@ class RoomFragment : Fragment() {
     private lateinit var binding: FragmentRoomBinding
     private lateinit var viewModelFactory: RoomViewModelFactory
     private lateinit var viewModel: RoomViewModel
+    private lateinit var adapter: RoomAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,18 +47,20 @@ class RoomFragment : Fragment() {
         viewModel = ViewModelProvider(this, viewModelFactory).get(RoomViewModel::class.java)
         binding.mViewModel = viewModel
         binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
+        adapter = RoomAdapter({ seletedItem: User -> onListItemClick(seletedItem) })
+        binding.recyclerview.adapter = adapter
         observeData()
     }
 
     private fun observeData() {
         viewModel.users.observe(requireActivity(), Observer { user_list ->
+            adapter.setData(user_list)
             binding.edtUsername.requestFocus()
-            binding.recyclerview.adapter =
-                RoomAdapter(user_list, {seletedItem: User -> onListItemClick(seletedItem)})
+
         })
 
-        viewModel.message.observe(requireActivity(), Observer {event ->
-            event.getContentIfNotHandled()?.let {message ->
+        viewModel.message.observe(requireActivity(), Observer { event ->
+            event.getContentIfNotHandled()?.let { message ->
                 Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
             }
         })

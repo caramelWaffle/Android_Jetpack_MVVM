@@ -6,13 +6,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.totorial.databinding.RoomItemBinding
 import com.example.totorial.room.data.User
 
-class RoomAdapter(private val users: List<User>, private val mClickListener: (User) -> Unit) :
+class RoomAdapter(private val mClickListener: (User) -> Unit) :
+
     RecyclerView.Adapter<RoomAdapter.MyViewHolder>() {
 
-//    fun setData(users: List<User>){
-//        this.users = users
-//        notifyDataSetChanged()
-//    }
+    private val users = ArrayList<User>()
+
+    fun setData(users: List<User>){
+        this.users.clear()
+        this.users.addAll(users)
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
