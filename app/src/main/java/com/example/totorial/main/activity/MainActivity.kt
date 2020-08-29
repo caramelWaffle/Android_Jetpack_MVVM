@@ -4,16 +4,26 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
+import com.example.totorial.MainApplication
 import com.example.totorial.R
+import com.example.totorial.dagger.SmartPhone
 import com.example.totorial.databinding.ActivityMainBinding
+import javax.inject.Inject
 import com.example.totorial.main.data.Studen as Studen
 
 class MainActivity : AppCompatActivity() {
+    @Inject
+    lateinit var smartPhone: SmartPhone
+
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initialVariable()
+
+        (application as MainApplication).smartPhoneComponent
+            .inject(this)
+        smartPhone.makeACallWithRecording()
     }
 
     private fun initialVariable() {

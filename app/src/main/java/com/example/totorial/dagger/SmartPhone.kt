@@ -5,7 +5,9 @@ import com.example.totorial.dagger.Battery
 import com.example.totorial.dagger.MemoryCard
 import com.example.totorial.dagger.SIMCard
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class SmartPhone @Inject constructor(val battery: Battery, val simCard: SIMCard, val memoryCard: MemoryCard) {
 
     init {
