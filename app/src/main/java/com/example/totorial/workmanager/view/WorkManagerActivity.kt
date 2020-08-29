@@ -8,7 +8,10 @@ import androidx.lifecycle.Observer
 import androidx.work.*
 import com.example.totorial.R
 import com.example.totorial.databinding.ActivityWorkManagerBinding
-import com.example.totorial.workmanager.UploadWorker
+import com.example.totorial.workmanager.worker.CompressWorker
+import com.example.totorial.workmanager.worker.DownloadWorker
+import com.example.totorial.workmanager.worker.FilteringWorker
+import com.example.totorial.workmanager.worker.UploadWorker
 
 class WorkManagerActivity : AppCompatActivity() {
 
@@ -44,7 +47,29 @@ class WorkManagerActivity : AppCompatActivity() {
             .setInputData(data)
             .build()
 
-        workManager.enqueue(uploadRequest)
+        val filteringRequest = OneTimeWorkRequest.Builder(FilteringWorker::class.java)
+            .build()
+
+        val compressRequest = OneTimeWorkRequest.Builder(CompressWorker::class.java)
+            .build()
+
+        val downloadRequest = OneTimeWorkRequest.Builder(DownloadWorker::class.java)
+            .build()
+
+        // Parallel request
+        val parallelWorker = mutableListOf<OneTimeWorkRequest>()
+        parallelWorker.add(downloadRequest)
+        parallelWorker.add(filteringRequest)
+
+        // Chain request
+        workManager.beginWith(parallelWorker)
+            .then(compressRequest)
+            .then(uploadRequest)
+            .enqueue()
+
+        // Single Request
+//        workManager.enqueue(uploadRequest)
+
         workManager.getWorkInfoByIdLiveData(uploadRequest.id)
             .observe(this, Observer {
                 binding.tvLog.text = it.state.name
