@@ -14,15 +14,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".workmanager.view.WorkManagerActivity">
+        <activity android:name=".dagger.view.DaggerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".notification.NotificationActivity">
-        </activity> <!-- ACTIVITY -->
+        <activity android:name=".workmanager.view.WorkManagerActivity">
+
+        </activity>
+        <activity android:name=".notification.NotificationActivity"></activity> <!-- ACTIVITY -->
         <activity android:name=".retrofit.view.RetrofitActivity" />
         <activity android:name=".room.view.activity.RoomActivity" />
         <activity android:name=".coroutine.activity.CoroutineActivity" />
