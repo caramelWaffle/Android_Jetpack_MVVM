@@ -12,6 +12,7 @@ import com.example.totorial.workmanager.worker.CompressWorker
 import com.example.totorial.workmanager.worker.DownloadWorker
 import com.example.totorial.workmanager.worker.FilteringWorker
 import com.example.totorial.workmanager.worker.UploadWorker
+import java.util.concurrent.TimeUnit
 
 class WorkManagerActivity : AppCompatActivity() {
 
@@ -31,6 +32,13 @@ class WorkManagerActivity : AppCompatActivity() {
         }
     }
 
+
+    private fun setPeriodicWorkRequest(){
+        val periodicWorkRequest = PeriodicWorkRequest.Builder(DownloadWorker::class.java, 15, TimeUnit.MINUTES)
+            .build()
+        WorkManager.getInstance(applicationContext)
+            .enqueue(periodicWorkRequest)
+    }
 
     private fun setOneTimeWorkRequest() {
         val workManager = WorkManager.getInstance(applicationContext)
