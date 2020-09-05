@@ -13,12 +13,12 @@ interface AlbumService {
     @GET("/albums")
     suspend fun getAlbumsByUserId(
         @Query("userId")
-        userId: Int): Response<Album>  //albums?userId=1
+        userId: Int): Response<Album>  //albums?userId=1   ?key=value
 
     @GET("/albums/{id}")
     suspend fun getAlbumsById(
         @Path("id")
-        albumId: Int): Response<AlbumItem> // albums/1
+        albumId: Int): Response<AlbumItem> // albums/1   /value
 
     @POST("/albums")
     suspend fun uploadAlbum(
