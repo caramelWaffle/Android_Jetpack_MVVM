@@ -21,7 +21,6 @@ class CoroutineActivity : AppCompatActivity() {
         binding.apply {
             mViewModel = viewModel
         }
-
     }
 
 }

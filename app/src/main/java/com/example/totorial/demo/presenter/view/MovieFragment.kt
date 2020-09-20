@@ -43,9 +43,7 @@ class MovieFragment : Fragment() {
         responseLiveData.observe(requireActivity(), Observer {
             Log.i("myTag", it.toString())
         })
-
     }
-
     companion object {
         @JvmStatic
         fun newInstance() =  MovieFragment()

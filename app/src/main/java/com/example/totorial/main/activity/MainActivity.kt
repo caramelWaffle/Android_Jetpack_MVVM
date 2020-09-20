@@ -32,6 +32,10 @@ class MainActivity : AppCompatActivity() {
             R.layout.activity_main
         )
 
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+
         binding.apply {
             button.setOnClickListener {
                 if (progressBar.visibility == View.GONE){
