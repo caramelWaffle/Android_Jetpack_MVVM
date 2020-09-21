@@ -2,12 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".view_model.activity.ChallengeActivity">
+    tools:context=".view_model_live_data.activity.ChallengeActivity">
 
     <data>
         <variable
             name="mViewModel"
-            type="com.example.totorial.view_model.view_model.ChallengeActivityViewModel" />
+            type="com.example.totorial.view_model_live_data.view_model.ChallengeActivityViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

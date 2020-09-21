@@ -28,10 +28,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun initialVariable() {
 
-        binding = DataBindingUtil.setContentView(this,
-            R.layout.activity_main
-        )
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
@@ -51,6 +47,9 @@ class MainActivity : AppCompatActivity() {
                 textView.visibility = View.VISIBLE
             }
 
+            button3.setOnClickListener{
+                textView.visibility = View.INVISIBLE
+            }
             student = Studen(1,"Tanachat", "tanachart.ar@gmail.com")
         }
     }

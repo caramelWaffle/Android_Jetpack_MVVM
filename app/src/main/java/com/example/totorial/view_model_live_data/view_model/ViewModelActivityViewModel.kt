@@ -1,4 +1,4 @@
-package com.example.totorial.view_model.view_model
+package com.example.totorial.view_model_live_data.view_model
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

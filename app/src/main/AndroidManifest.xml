@@ -14,17 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".demo.presenter.view.MovieActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".dagger.view.DaggerActivity">
-        </activity>
-        <activity android:name=".workmanager.view.WorkManagerActivity"></activity>
-        <activity android:name=".notification.NotificationActivity" /> <!-- ACTIVITY -->
+        <activity android:name=".demo.presenter.view.MovieActivity"/>
+        <activity android:name=".dagger.view.DaggerActivity"/>
+        <activity android:name=".workmanager.view.WorkManagerActivity"/>
+        <activity android:name=".notification.NotificationActivity" />
         <activity android:name=".retrofit.view.RetrofitActivity" />
         <activity android:name=".room.view.activity.RoomActivity" />
         <activity android:name=".coroutine.activity.CoroutineActivity" />
@@ -32,9 +25,15 @@
         <activity android:name=".nav_quiz.activity.NavQuizActivity" />
         <activity android:name=".nav.activity.NavActivity" />
         <activity android:name=".twoway_binding.activity.TwoWayBindingActivity" />
-        <activity android:name=".view_model.activity.ChallengeActivity" />
-        <activity android:name=".view_model.activity.ViewModelActivity" />
-        <activity android:name=".main.activity.MainActivity" />
+        <activity android:name=".view_model_live_data.activity.ChallengeActivity" />
+        <activity android:name=".view_model_live_data.activity.ViewModelActivity" />
+        <activity android:name=".main.activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

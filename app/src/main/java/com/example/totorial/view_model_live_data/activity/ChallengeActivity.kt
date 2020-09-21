@@ -1,13 +1,11 @@
-package com.example.totorial.view_model.activity
+package com.example.totorial.view_model_live_data.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
 import com.example.totorial.R
 import com.example.totorial.databinding.ActivityViewModelChallengeBinding
-import com.example.totorial.view_model.fragment.ChallengeFragment
-import com.example.totorial.view_model.view_model.ChallengeActivityViewModel
+import com.example.totorial.view_model_live_data.fragment.ChallengeFragment
 
 class ChallengeActivity : AppCompatActivity() {
     lateinit var binding: ActivityViewModelChallengeBinding

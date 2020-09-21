@@ -36,6 +36,8 @@ class CoroutineViewModel() : ViewModel(), Observable {
 //        Dispatchers.Default == CPU intensive task (High computational)
 
 //        launch == launch without blocking current thread and it can return value after finish
+//        asyn == launch without blocking current thread and it can return value after finish with await
+//        runBlocking == block tread
         CoroutineScope(Dispatchers.IO).launch {
             downloadUserData()
         }
